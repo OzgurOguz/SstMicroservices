@@ -5,17 +5,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
-using Sst.Contact.App.Interfaces;
-using Sst.Contact.Data.Settings;
-using Sst.Contact.Services;
+//using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sst.Contact
+namespace Sst.Report
 {
     public class Startup
     {
@@ -29,22 +25,12 @@ namespace Sst.Contact
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IContactService, ContactService>();
-            services.AddScoped<IContactInformationService, ContactInformationService>();
-            services.AddAutoMapper(typeof(Startup));
+
             services.AddControllers();
-
-            services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
-
-            services.AddSingleton<IDatabaseSettings>(sp =>
-            {
-                return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
-            });
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sst.Contact", Version = "v1" });
-            });
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sst.Report", Version = "v1" });
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,8 +39,8 @@ namespace Sst.Contact
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sst.Contact v1"));
+                //app.UseSwagger();
+                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sst.Report v1"));
             }
 
             app.UseRouting();

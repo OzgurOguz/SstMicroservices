@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sst.Contact.Models
+namespace Sst.Report.Models
 {
     public class ContactInformation
     {
@@ -14,7 +14,6 @@ namespace Sst.Contact.Models
         public string Id { get; set; }
         public string Type { get; set; }
         public string Content { get; set; }
-        public virtual InformationType InformationType { get; set; }
-
+        public InformationType InformationType { get; set; }
     }
 }

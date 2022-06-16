@@ -10,6 +10,6 @@ namespace Sst.Report.App
     {
         Task<List<LocationWithNumbersDto>> GetLocationWithNumbers();
         Task<List<PeopleAtLocationDto>> GetPeopleAtLocation();
-        Task<List<PhoneNumberAtAdressBook>> GetPhoneNumberAtAdressBook()
+        Task<List<PhoneNumberAtAdressBook>> GetPhoneNumberAtAdressBook();
     }
 }

@@ -1,3 +1,4 @@
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,23 @@ namespace Sst.Contact
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddMassTransit(x =>
+            {
+                x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(config =>
+                 {
+                     //config.UseHealthCheck(config);
+                     config.Host(new Uri(Configuration["ServiceBus:Uri"]), host =>
+                      {
+                          host.Username(Configuration["ServiceBus:UserName"]);
+                          host.Password(Configuration["ServiceBus:Password"]);
+                      });
+                 }));
+            });
+
+
+            //services.AddMassTransitHostedService();
+
             services.AddScoped<IContactService, ContactService>();
             services.AddScoped<IContactInformationService, ContactInformationService>();
             services.AddAutoMapper(typeof(Startup));
@@ -40,6 +58,7 @@ namespace Sst.Contact
             {
                 return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
             });
+
 
             services.AddSwaggerGen(c =>
             {

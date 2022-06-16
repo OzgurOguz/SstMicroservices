@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MassTransit;
+using Microsoft.AspNetCore.Mvc;
 using Sst.Contact.App.Dtos.ContactDtos;
 using Sst.Contact.App.Interfaces;
 using Sst.Shared.BaseControllers;
@@ -14,6 +15,7 @@ namespace Sst.Contact.Controllers
     public class ContactController : Controller //CustomBaseController
     {
         private readonly IContactService _contactService;
+
         public ContactController(IContactService contactService)
         {
             _contactService = contactService;

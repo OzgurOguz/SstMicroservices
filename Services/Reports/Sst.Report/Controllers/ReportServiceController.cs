@@ -22,18 +22,21 @@ namespace Sst.Report.Controllers
         }
 
         [HttpGet]
+        [Route("location-with-numbers")]
         public Task<List<LocationWithNumbersDto>> GetLocationWithNumbers()
         {
             return _reportService.GetLocationWithNumbers();
         }
 
         [HttpGet]
+        [Route("people-at-location")]
         public Task<List<PeopleAtLocationDto>> GetPeopleAtLocation()
         {
             return _reportService.GetPeopleAtLocation();
         }
 
         [HttpGet]
+        [Route("phone-number-at-adresbook")]
         public Task<List<PhoneNumberAtAdressBook>> GetPhoneNumberAtAdressBook()
         {
             return _reportService.GetPhoneNumberAtAdressBook();

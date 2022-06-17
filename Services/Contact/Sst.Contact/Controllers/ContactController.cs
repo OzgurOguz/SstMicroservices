@@ -24,7 +24,8 @@ namespace Sst.Contact.Controllers
         [HttpPost]
         public async Task<ResponseDto<ContactDto>> CreateAsync(Models.Contact contact)
         {
-            return await _contactService.CreateAsync(contact);
+            var x = await _contactService.CreateAsync(contact);
+            return x;
            // return (ResponseDto<ContactDto>)CreateActionResultInstance(response);
         }
 

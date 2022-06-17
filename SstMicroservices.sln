@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sst.Shared", "Shared\SstSha
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReportService", "ReportService", "{79547878-4226-44BB-99A9-6EF412744384}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sst.Report", "Services\Reports\Sst.Report\Sst.Report.csproj", "{D24A0DF1-096B-4101-B0E7-1612CF505FEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sst.Report", "Services\Reports\Sst.Report\Sst.Report.csproj", "{D24A0DF1-096B-4101-B0E7-1612CF505FEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject2", "TestProject2\TestProject2.csproj", "{0154E575-5785-4224-A206-A2D8B8F03F5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{D24A0DF1-096B-4101-B0E7-1612CF505FEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D24A0DF1-096B-4101-B0E7-1612CF505FEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D24A0DF1-096B-4101-B0E7-1612CF505FEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0154E575-5785-4224-A206-A2D8B8F03F5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0154E575-5785-4224-A206-A2D8B8F03F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0154E575-5785-4224-A206-A2D8B8F03F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0154E575-5785-4224-A206-A2D8B8F03F5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Sst.Report.App;
+using Sst.Report.App.Interfaces;
 using Sst.Report.Consumers;
 using Sst.Report.Data.Settings;
 using Sst.Report.Services;

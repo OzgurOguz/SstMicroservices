@@ -1,5 +1,5 @@
-﻿using MassTransit;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
+using Sst.Report.App.Interfaces;
 using Sst.Report.Data.Settings;
 using Sst.Report.Models;
 using Sst.Shared.Dtos.Messages;
@@ -8,36 +8,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sst.Report.Consumers
+namespace Sst.Report.Services
 {
-    public class ReportConsumer : IConsumer<ContactCommand>
+
+
+    public class ContactCrudService : IContactCrudService
     {
 
         private readonly IMongoCollection<Contact> _contactCollection;
 
-
-        public ReportConsumer(IDatabaseSettings dbSettings)
+        public ContactCrudService(IMongoCollection<Contact> _contactCollection)
         {
-            var client = new MongoClient(dbSettings.ConnectionString);
-            var db = client.GetDatabase(dbSettings.DatabaseName);
-            _contactCollection = db.GetCollection<Contact>(dbSettings.ContactCollectionName);
         }
 
-        public async Task Consume(ConsumeContext<ContactCommand> context)
+        public async void CreateAsync(ContactCommand contact)
         {
-
             await Task.Run(() =>
             {
-                if (context.Message.Crud == "Insert") {
-                    _contactCollection.InsertOneAsync(MapToContact(context.Message));
+                if (contact.Crud == "Insert")
+                {
+                    _contactCollection.InsertOneAsync(MapToContact(contact));
                 }
-                if (context.Message.Crud == "Update") _contactCollection.FindOneAndReplaceAsync(x => x.Id == MapToContact(context.Message).Id, MapToContact(context.Message));
-                if (context.Message.Crud == "Delete") _contactCollection.DeleteOneAsync(x => x.Id == MapToContact(context.Message).Id);
-
             });
-
         }
 
+        public void DeleteAsync(ContactCommand contact)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateAsync(ContactCommand contact)
+        {
+            throw new NotImplementedException();
+        }
 
         public Contact MapToContact(ContactCommand contactCommand)
         {

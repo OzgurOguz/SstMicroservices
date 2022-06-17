@@ -56,6 +56,7 @@ namespace Sst.Contact.Services
             await _contactCollection.InsertOneAsync(contact);
 
             ContactCommand contactCommand = _mapper.Map<Sst.Contact.Models.Contact, ContactCommand>(contact);
+            contactCommand.Crud = "Insert";
             Sst.Contact.Publisher.Publisher<ContactCommand> publisher = new Publisher<ContactCommand>(_busService, _configuration);
             publisher.Publish(contactCommand, "Insert");
 
@@ -73,6 +74,7 @@ namespace Sst.Contact.Services
 
             ContactCommand contactCommand = _mapper.Map<Sst.Contact.Models.Contact, ContactCommand>(updateContact);
             Sst.Contact.Publisher.Publisher<ContactCommand> publisher = new Publisher<ContactCommand>(_busService, _configuration);
+            contactCommand.Crud = "Update";
             publisher.Publish(contactCommand, "Update");
 
             return ResponseDto<NoContent>.Success(204);
@@ -89,6 +91,7 @@ namespace Sst.Contact.Services
                 Id = id
             };
             Sst.Contact.Publisher.Publisher<ContactCommand> publisher = new Publisher<ContactCommand>(_busService, _configuration);
+            contactCommand.Crud = "Delete";
             publisher.Publish(contactCommand, "Delete");
 
             return ResponseDto<NoContent>.Success(204);
